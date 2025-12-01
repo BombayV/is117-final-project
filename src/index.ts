@@ -6,26 +6,15 @@ const server = serve({
 		// Serve index.html for all unmatched routes.
 		"/*": index,
 
-		"/api/hello": {
-			async GET() {
+		"/api/contact": {
+			async POST(req) {
+				const body = await req.json();
+				console.log("Contact form submission:", body);
+				// TODO: Integrate email service here (e.g., Resend, Nodemailer)
 				return Response.json({
-					message: "Hello, world!",
-					method: "GET",
+					message: "Message sent successfully!",
 				});
 			},
-			async PUT() {
-				return Response.json({
-					message: "Hello, world!",
-					method: "PUT",
-				});
-			},
-		},
-
-		"/api/hello/:name": async (req) => {
-			const name = req.params.name;
-			return Response.json({
-				message: `Hello, ${name}!`,
-			});
 		},
 	},
 

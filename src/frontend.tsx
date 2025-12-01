@@ -2,33 +2,18 @@ import { Analytics } from "@vercel/analytics/react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Route, Switch } from "wouter";
+import ContactPage from "./pages/contact";
 import { Home } from "./pages/Home";
 import "@/styles/globals.css";
-import { Book, ChartNoAxesGantt, HomeIcon, QrCode, User } from "lucide-react";
+import { HomeIcon, QrCode } from "lucide-react";
 import { FloatingDock } from "./components/ui/floating-dock";
-import BlogSectionPage from "./pages/blog";
-import ProjectsPage from "./pages/projects";
+import NotFound from "./pages/404";
 
 const DOCK_ITEMS = [
 	{
 		title: "Home",
 		icon: <HomeIcon />,
 		href: "/",
-	},
-	{
-		title: "About",
-		icon: <User />,
-		href: "/about",
-	},
-	{
-		title: "Projects",
-		icon: <ChartNoAxesGantt />,
-		href: "/projects",
-	},
-	{
-		title: "Blog",
-		icon: <Book />,
-		href: "/blog",
 	},
 	{
 		title: "Contact",
@@ -43,13 +28,8 @@ const app = (
 	<StrictMode>
 		<Switch>
 			<Route path="/" component={Home}></Route>
-			<Route path="/about" component={() => <div>About Page</div>}></Route>
-			<Route path="/projects" component={ProjectsPage}></Route>
-			<Route path="/blog" component={BlogSectionPage}></Route>
-			<Route path="/contact" component={() => <div>Contact Page</div>}></Route>
-			<Route>
-				<h1>404: Not Found</h1>
-			</Route>
+			<Route path="/contact" component={ContactPage}></Route>
+			<Route component={NotFound}></Route>
 		</Switch>
 		<FloatingDock
 			desktopClassName="fixed bottom-0 left-1/2 -translate-x-1/2 mb-6"
