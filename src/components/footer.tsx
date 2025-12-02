@@ -37,7 +37,6 @@ const Footer = ({
 			title: "Main",
 			links: [
 				{ text: "Home", url: "/" },
-				{ text: "Projects", url: "/projects" },
 				{ text: "Contact", url: "/contact" },
 			],
 		},
